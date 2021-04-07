@@ -6,10 +6,28 @@ let connection;
 // "Move: down" - move down one square(unless facing up)
 // "Move: left" - move left one square(unless facing right)
 // "Move: right" - move left one square(unless facing left)
-const handleUserInput = (conn,key) => {
+const handleUserInput = (conn, key) => {
   if (key === '\u0003') {
     process.exit();
   }
+  // emotes
+  if (key === '1') {
+    conn.write(`Say: :)`);
+  }
+  if (key === '2') {
+    conn.write(`Say: :(`);
+  }
+  if (key === '3') {
+    conn.write(`Say: -_-`);
+  }
+  if (key === '4') {
+    conn.write(`Say: :\*`);
+  }
+  if (key === '5') {
+    conn.write(`Say: ?`);
+  }
+
+  //move
   if (key === 'w') {
     conn.write('Move: up');
   }
@@ -32,7 +50,7 @@ const setupInput = (conn) => {
   stdin.resume();
 
   stdin.on('data', key => {
-    handleUserInput(connection,key)
+    handleUserInput(connection, key)
   })
 
   return stdin;
