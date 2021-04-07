@@ -1,3 +1,4 @@
+const { keyMap } = require('./constants');
 
 // Stores the active TCP connection object.
 let connection;
@@ -11,33 +12,33 @@ const handleUserInput = (conn, key) => {
     process.exit();
   }
   // emotes
-  if (key === '1') {
+  if (key === keyMap.SMILE_KEY) {
     conn.write(`Say: :)`);
   }
-  if (key === '2') {
+  if (key === keyMap.SAD_KEY) {
     conn.write(`Say: :(`);
   }
-  if (key === '3') {
+  if (key === keyMap.TIRED_KEY) {
     conn.write(`Say: -_-`);
   }
-  if (key === '4') {
+  if (key === keyMap.SWEAR_KEY) {
     conn.write(`Say: :\*`);
   }
-  if (key === '5') {
+  if (key === keyMap.QUESTION_KEY) {
     conn.write(`Say: ?`);
   }
 
   //move
-  if (key === 'w') {
+  if (key === keyMap.MOVE_UP_KEY) {
     conn.write('Move: up');
   }
-  if (key === 'a') {
+  if (key === keyMap.MOVE_LEFT_KEY) {
     conn.write('Move: left');
   }
-  if (key === 's') {
+  if (key === keyMap.MOVE_DOWN_KEY) {
     conn.write('Move: down');
   }
-  if (key === 'd') {
+  if (key === keyMap.MOVE_RIGHT_KEY) {
     conn.write('Move: right');
   }
 };
