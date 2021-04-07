@@ -17,4 +17,4 @@ module.exports = {
   IP,
   PORT,
   keyMap
-};w
+};

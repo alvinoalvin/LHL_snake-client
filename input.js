@@ -2,11 +2,8 @@ const { keyMap } = require('./constants');
 
 // Stores the active TCP connection object.
 let connection;
+let timoutObj = {};
 
-// "Move: up" - move up one square(unless facing down)
-// "Move: down" - move down one square(unless facing up)
-// "Move: left" - move left one square(unless facing right)
-// "Move: right" - move left one square(unless facing left)
 const handleUserInput = (conn, key) => {
   if (key === '\u0003') {
     process.exit();
@@ -28,18 +25,40 @@ const handleUserInput = (conn, key) => {
     conn.write(`Say: ?`);
   }
 
-  //move
+  // ******** MOVE FUNCTIONS ******** 
+  // "Move: up" - move up one square(unless facing down)
+  // "Move: down" - move down one square(unless facing up)
+  // "Move: left" - move left one square(unless facing right)
+  // "Move: right" - move left one square(unless facing left)
+
   if (key === keyMap.MOVE_UP_KEY) {
-    conn.write('Move: up');
+    clearInterval(timoutObj);
+
+    timoutObj = (timoutObj = setInterval(() => {
+      conn.write('Move: up');
+    }, 100));
+
   }
   if (key === keyMap.MOVE_LEFT_KEY) {
-    conn.write('Move: left');
+    clearInterval(timoutObj);
+
+    timoutObj = setInterval(() => {
+      conn.write('Move: left');
+    }, 100);
   }
   if (key === keyMap.MOVE_DOWN_KEY) {
-    conn.write('Move: down');
+    clearInterval(timoutObj);
+
+    timoutObj = setInterval(() => {
+      conn.write('Move: down');
+    }, 100);
   }
   if (key === keyMap.MOVE_RIGHT_KEY) {
-    conn.write('Move: right');
+    clearInterval(timoutObj);
+
+    timoutObj = setInterval(() => {
+      conn.write('Move: right');
+    }, 100);
   }
 };
 
