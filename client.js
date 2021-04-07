@@ -9,6 +9,8 @@ const connect = function() {
     host: 'localhost',
     port: 50541
   });
+  
+  console.log('Connecting ...');
 
   conn.on('connect', () => {
     console.log("Successfully connected to game server");
@@ -25,26 +27,4 @@ const connect = function() {
   return conn;
 };
 
-/**
- * Setup User Interface 
- * Specifically, so that we can handle user input via stdin
- */
-
-// let conn = connect()
-// conn.on('data', (key) => {
-//   if (key === 'w') {
-//     connect.write("Move: up");
-//   }
-//   if (key === 'w') {
-//     connect.write("Move: down");
-//   }
-//   if (key === 'w') {
-//     connect.write("Move: left");
-//   }
-//   if (key === 'w') {
-//     connect.write("Move: right");
-//   }
-// }
-// );
-// console.log(connect);
 module.exports = { connect };
