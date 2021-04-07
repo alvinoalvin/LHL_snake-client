@@ -8,17 +8,20 @@ const connect = function() {
     host: 'localhost',
     port: 50541
   });
-  // interpret incoming data as text
-  conn.setEncoding('utf8');
 
-  process.stdin.on('data', (key) => {
-    if (key === 'w') {
-    }
-    console.log(key)
-    process.stdout.write('.');
+  conn.on('connect', () => {
+    console.log("Successfully connected to game server");
   });
+
+  process.stdin.on('data', message => conn.write("Name: [ ]"));
+  // process.stdin.on('data', (key) => {
+  //   if (key === 'w') {
+  //   }
+  //   console.log(key)
+  //   process.stdout.write('.');
+  // });
 
   return conn;
 };
 // console.log(connect);
-module.exports = {connect};
+module.exports = { connect };
